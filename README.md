@@ -3,11 +3,11 @@
 这是一个 Manifest V3 Chrome 插件，用于在用户点击“开始”后自动进入 VATUU 课程评价问卷、填写题目并提交。
 
 ## 使用方式
-
+首先git clone源代码，即下载本仓库。
 1. 打开 Chrome 扩展程序页面：`chrome://extensions/`
 2. 开启“开发者模式”
 3. 点击“加载已解压的扩展程序”
-4. 选择本项目目录：`D:\workspace\proj\no-vatuu-evaluation`
+4. 选择本项目目录：`\no-vatuu-evaluation`
 5. 登录 VATUU，为途教学信息服务平台，进入“课程评价”列表页
 6. 点击插件图标，设置评分、问答题文本和提交等待时间，然后点“开始”
 
