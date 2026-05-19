@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "NO VATUU Evaluation",
+  "version": "0.1.0",
+  "description": "Auto-fill VATUU course evaluation forms after explicit user start.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://jwc.swjtu.edu.cn/*",
+    "file:///*"
+  ],
+  "action": {
+    "default_title": "NO VATUU Evaluation",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://jwc.swjtu.edu.cn/vatuu/*",
+        "file:///*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
+}

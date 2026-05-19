@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <title>NO VATUU Evaluation</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="panel">
+      <header>
+        <h1>课程评价助手</h1>
+        <p id="status">读取状态中...</p>
+      </header>
+
+      <label class="field">
+        <span>单选题评分</span>
+        <select id="score">
+          <option value="5.0">5 分</option>
+          <option value="4.0">4 分</option>
+          <option value="3.0">3 分</option>
+          <option value="2.0">2 分</option>
+          <option value="1.0">1 分</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>提交前等待</span>
+        <input id="delay" type="number" min="0" max="180" step="1" value="65">
+      </label>
+
+      <label class="field">
+        <span>满意项文本</span>
+        <textarea id="positiveText" rows="3"></textarea>
+      </label>
+
+      <label class="field">
+        <span>改进项文本</span>
+        <textarea id="improveText" rows="3"></textarea>
+      </label>
+
+      <label class="check">
+        <input id="autoSubmit" type="checkbox" checked>
+        <span>填完后自动提交</span>
+      </label>
+
+      <div class="actions">
+        <button id="start" type="button">开始</button>
+        <button id="stop" type="button">停止</button>
+      </div>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

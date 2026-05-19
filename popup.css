@@ -1,0 +1,92 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 320px;
+  margin: 0;
+  color: #172033;
+  background: #f5f7fb;
+  font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.panel {
+  padding: 14px;
+}
+
+header {
+  margin-bottom: 12px;
+}
+
+h1 {
+  margin: 0 0 4px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+p {
+  min-height: 20px;
+  margin: 0;
+  color: #607089;
+  font-size: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.field span,
+.check span {
+  color: #34435a;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+select,
+input,
+textarea {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 8px;
+  color: #172033;
+  background: #fff;
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.check input {
+  width: auto;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+button {
+  border: 0;
+  border-radius: 6px;
+  padding: 9px 10px;
+  color: #fff;
+  background: #1668dc;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+button#stop {
+  background: #7b8794;
+}
