@@ -4,6 +4,7 @@
 
 ## 使用方式
 首先git clone源代码，即下载本仓库。
+`git clone https://github.com/kashaku/no-vatuu-evaluation`，或者直接通过该页面的`Code`->`Download ZIP`，完成下载。
 1. 打开 Chrome 扩展程序页面：`chrome://extensions/`
 2. 开启“开发者模式”
 3. 点击“加载已解压的扩展程序”
