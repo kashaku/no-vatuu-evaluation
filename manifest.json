@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "NO VATUU Evaluation",
+  "name": "Vatuu Killer",
   "version": "0.1.0",
   "description": "Auto-fill VATUU course evaluation forms after explicit user start.",
   "permissions": [
@@ -11,7 +11,7 @@
     "file:///*"
   ],
   "action": {
-    "default_title": "NO VATUU Evaluation",
+    "default_title": "Vatuu Killer",
     "default_popup": "popup.html"
   },
   "content_scripts": [

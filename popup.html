@@ -2,15 +2,22 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">
-    <title>NO VATUU Evaluation</title>
+    <title>Vatuu Killer</title>
     <link rel="stylesheet" href="popup.css">
   </head>
   <body>
     <main class="panel">
       <header>
-        <h1>课程评价助手</h1>
-        <p id="status">读取状态中...</p>
+        <h1>Vatuu Killer</h1>
       </header>
+
+      <section class="status-card" aria-live="polite">
+        <div class="status-head">
+          <span>脚本状态</span>
+          <strong id="statusBadge" class="status-badge is-ready">就绪</strong>
+        </div>
+        <p id="status">等待启动</p>
+      </section>
 
       <label class="field">
         <span>单选题评分</span>
@@ -25,7 +32,8 @@
 
       <label class="field">
         <span>提交前等待</span>
-        <input id="delay" type="number" min="0" max="180" step="1" value="65">
+        <input id="delay" type="number" min="0" max="180" step="1" value="15">
+        <small>若提交失败，可以尝试增大等待时间</small>
       </label>
 
       <label class="field">

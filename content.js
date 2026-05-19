@@ -3,7 +3,7 @@
   const DEFAULTS = {
     running: false,
     score: "5.0",
-    submitDelaySeconds: 65,
+    submitDelaySeconds: 15,
     autoSubmit: true,
     positiveText: "课程内容安排合理，教师讲解清晰，学习收获较大。",
     improveText: "建议继续丰富案例与实践环节。",
@@ -13,6 +13,7 @@
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   let busy = false;
+  let countdownTimer = 0;
 
   function storageGet() {
     return chrome.storage.local.get(STORAGE_KEY).then((data) => ({
@@ -91,9 +92,9 @@
       "z-index:2147483647",
       "max-width:360px",
       "padding:10px 12px",
-      "border-radius:8px",
-      "box-shadow:0 8px 24px rgba(15,23,42,.18)",
-      "background:#172033",
+      "border:1px solid #f27a1a",
+      "box-shadow:6px 6px 0 rgba(0,0,0,.18)",
+      "background:#2b2f35",
       "color:#fff",
       "font:13px/1.45 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
     ].join(";");
@@ -206,21 +207,20 @@
       return true;
     }
 
-    const shouldSubmit = await waitBeforeSubmit(startedAt, latest);
-    if (!shouldSubmit) return true;
-
+    await waitBeforeSubmit(startedAt, latest);
     await submitQuestionnaire();
     return true;
   }
 
   async function waitBeforeSubmit(startedAt, state) {
     const waitMs = Math.max(0, Number(state.submitDelaySeconds || 0) * 1000);
+    clearInterval(countdownTimer);
 
     while (Date.now() - startedAt < waitMs) {
       const latest = await storageGet();
       if (!latest.running) {
         setOverlay("已停止");
-        return false;
+        return;
       }
 
       const remaining = Math.ceil((waitMs - (Date.now() - startedAt)) / 1000);
@@ -230,10 +230,8 @@
         phase: "waiting",
         status: message
       });
-      await delay(Math.min(1000, waitMs - (Date.now() - startedAt)));
+      await delay(Math.min(1000, waitMs));
     }
-
-    return true;
   }
 
   async function submitQuestionnaire() {
@@ -304,6 +302,10 @@
 
       if (window.top === window) {
         setOverlay("已启动，请打开 VATUU 课程评价列表页");
+        await storagePatch({
+          phase: "idle",
+          status: "请打开课程评价列表页"
+        });
       }
     } finally {
       busy = false;
@@ -315,6 +317,7 @@
       const next = { ...DEFAULTS, ...changes[STORAGE_KEY].newValue };
       if (next.running) run();
       if (!next.running) {
+        clearInterval(countdownTimer);
         const overlay = document.getElementById("no-vatuu-evaluation-status");
         if (overlay) overlay.remove();
       }
